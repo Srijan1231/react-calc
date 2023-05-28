@@ -117,6 +117,18 @@ const Calculator = () => {
       setLastOperator(val);
       return;
     }
+    if (val === ".") {
+      if (lastOperator) {
+        const operatorIndex = strToDisplay.lastIndexOf(lastOperator);
+        const numberAfterLastOperator = strToDisplay.slice(operatorIndex);
+        if (numberAfterLastOperator.includes(".")) {
+          return;
+        }
+      }
+      if (!lastOperator && strToDisplay.includes(".")) {
+        return;
+      }
+    }
 
     setStrToDisplay(strToDisplay + val);
 
